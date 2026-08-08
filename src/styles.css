@@ -1,3 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border-color);
+  --color-foreground: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+}
+
+:root {
+  color-scheme: light;
+  --bg: #f2f6fc;
+  --surface: #ffffff;
+  --surface-2: #e9eef7;
+  --border-color: #dce5f2;
+  --text: #16263b;
+  --muted: #5f7394;
+  --primary: #2f66e6;
+  --primary-hover: #1d53cf;
+  --primary-soft: rgb(47 102 230 / 0.1);
+  --on-primary: #ffffff;
+  --accent: #0d9a8a;
+  --success: #16a34a;
+  --warning: #c77700;
+  --danger: #dc2626;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0b1222;
+  --surface: #111a2e;
+  --surface-2: #1a2540;
+  --border-color: #26335a;
+  --text: #e7eef9;
+  --muted: #9aabc8;
+  --primary: #4c8df6;
+  --primary-hover: #70a5ff;
+  --primary-soft: rgb(76 141 246 / 0.15);
+  --on-primary: #ffffff;
+  --accent: #5fd0c0;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
