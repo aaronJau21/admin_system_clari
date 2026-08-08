@@ -1,5 +1,19 @@
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
+## Repo Commands & Setup
+
+- **Package manager is `pnpm`** (angular.json `cli.packageManager` + `packageManager` field). Use `pnpm`, not npm.
+- Dev server: `ng serve` (http://localhost:4200).
+- Build: `ng build` (production by default; budgets: 500kB initial / 1MB error, 4kB anyComponentStyle).
+- Tests run with **Vitest** via `@angular/build:unit-test` in jsdom (no Karma). Run once: `ng test --watch=false`; focused: `ng test --filter <regex>` on test names.
+- **There is no linting**: no ESLint/`lint` target exists. Do not run `npm run lint`. Verify with `ng build` and the Vitest tests.
+
+## Toolchain Quirks
+
+- **Tailwind CSS v4, config-less.** Global styles live in `src/styles.css` via `@import 'tailwindcss'` + the `@tailwindcss/postcss` plugin. Do NOT create a `tailwind.config.js`.
+- Prettier is configured (`.prettierrc`: `singleQuote`, `printWidth: 100`, `parser: angular` for `*.html`) but has no npm script — run `npx prettier --write` manually if formatting.
+- Standalone + bootstrapApplication: `src/main.ts` boots `App` via `bootstrapApplication(App, appConfig)` — there are no NgModules anywhere. `public/` assets are served at the app root.
+
 ## TypeScript Best Practices
 
 - Use strict type checking
@@ -54,5 +68,5 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
-- Prefer the `@Service` decorator over `@Injectable({providedIn: 'root'})` for new singleton services (Angular v22+)
+- Prefer the `@Service` decorator over `@Injectable({providedIn: 'root'})`
 - Use the `inject()` function instead of constructor injection
